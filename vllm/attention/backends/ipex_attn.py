@@ -74,6 +74,7 @@ class IpexAttnMetadata(AttentionMetadata, PagedAttentionMetadata):
     seq_lens: Optional[List[int]]
     seqlen_q: Optional[torch.Tensor]
     max_seqlen: Optional[int]
+    encoder_seq_lens_tensor: Optional[torch.Tensor]
 
     def __post_init__(self):
         # Set during the execution of the first attention op.

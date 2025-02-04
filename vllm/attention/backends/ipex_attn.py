@@ -1,6 +1,6 @@
 """ Attention layer with torch scaled_dot_product_attention
     and PagedAttention."""
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple, Type
 
 import torch
@@ -74,9 +74,7 @@ class IpexAttnMetadata(AttentionMetadata, PagedAttentionMetadata):
     seq_lens: Optional[List[int]]
     seqlen_q: Optional[torch.Tensor]
     max_seqlen: Optional[int]
-    encoder_seq_lens_tensor: torch.Tensor = field(
-        default_factory=lambda: torch.tensor([], dtype=torch.int64)
-    )
+
     def __post_init__(self):
         # Set during the execution of the first attention op.
         # It is a list because it is needed to set per prompt
